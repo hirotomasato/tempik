@@ -1,0 +1,39 @@
+name = "tempik"
+main = "src/index.ts"
+compatibility_date = "2025-06-01"
+
+# Set workers_dev to false when using your own domain
+workers_dev = false
+
+# ---- D1 Database ----
+# Step 1: run `npx wrangler d1 create tempik-db`
+# Step 2: copy the database_id here
+[[d1_databases]]
+binding = "DB"
+database_name = "tempik-db"
+database_id = ""
+
+# ---- Email Worker ----
+[email]
+action = "process"
+
+# ---- Custom domain routes ----
+# CHANGE THIS to your own domain (e.g. tempik.example.com)
+[[routes]]
+pattern = "tempik.YOURDOMAIN.com"
+custom_domain = true
+
+# ---- Environment variables ----
+# CHANGE THESE to your own domain
+[vars]
+APP_NAME = "Tempik"
+MAIL_DOMAIN = "YOURDOMAIN.com"
+WEB_HOST = "tempik.YOURDOMAIN.com"
+
+# ---- Static assets (web frontend) ----
+[assets]
+directory = "./src/web"
+
+# ---- Observability ----
+[observability]
+enabled = true

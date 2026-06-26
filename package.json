@@ -1,0 +1,21 @@
+{
+  "name": "tempik",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "db:create": "wrangler d1 create tempik-db",
+    "db:migrate": "wrangler d1 execute tempik-db --file=src/db/schema.sql",
+    "db:local": "wrangler d1 execute tempik-db --local --file=src/db/schema.sql"
+  },
+  "dependencies": {
+    "hono": "^4.4.0",
+    "postal-mime": "^2.4.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250509.0",
+    "typescript": "^5.5.0",
+    "wrangler": "^4.105.0"
+  }
+}
